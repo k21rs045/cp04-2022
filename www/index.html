@@ -186,15 +186,16 @@
         function btnAClick(e) {
             active = true;
             startTime = new Date();
-
+            if(a != 0){
+                startTime -= a;
+            }
 
         }
 
         // ButtonBがクリックされた時の処理
         function btnBClick(e) {
             active = false;
-
-
+            a = new Date() - startTime;
         }
 
         // ButtonCがクリックされた時の処理
