@@ -175,7 +175,7 @@
                 ctx.drawImage(img, 0, 0, 300, 300);
             };
             var audio = new Audio();
-            audio.src = "pin.wav";
+            audio.src = "poko.mp3";
             audio.play();
 
 
@@ -186,6 +186,7 @@
         function btnAClick(e) {
             active = true;
             startTime = new Date();
+            alarm();
             if(a != 0){
                 startTime -= a;
             }
@@ -195,6 +196,7 @@
         // ButtonBがクリックされた時の処理
         function btnBClick(e) {
             active = false;
+            alarm();
             a = new Date() - startTime;
         }
 
