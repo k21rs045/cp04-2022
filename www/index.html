@@ -219,7 +219,9 @@
             period = 60 * parseInt(3);
             $("#time").html("経過時間 : 0");
             $("#remain").html("残り時間:" + period);
-
+            $("#btnC").css("background-color","gray");
+            $("#btnD").css("background-color","white");
+            $("#btnE").css("background-color","white");
 
         }
 
@@ -228,6 +230,9 @@
             active = false;
             period = 60 * parseInt(2);
             $("#remain").html("残り時間:" + period);
+            $("#btnC").css("background-color","white");
+            $("#btnD").css("background-color","gray");
+            $("#btnE").css("background-color","white");
         }
 
         function btnEClick(e) {
@@ -235,6 +240,9 @@
             active = false;
             period = 60 *parseInt(1);
             $("#remain").html("残り時間:" + period);
+                        $("#btnC").css("background-color","white");
+            $("#btnD").css("background-color","white");
+            $("#btnE").css("background-color","gray");
         }
 
 
