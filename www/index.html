@@ -39,6 +39,10 @@
             $('#btnC').click(function(e) {
                 btnCClick(e);
             });
+
+            $('#btnD').click(function(e) {
+                btnDClick(e);
+            });
             init();
         });
 
@@ -162,6 +166,7 @@
             $('#btnA').prop('disabled', false);
             $('#btnB').prop('disabled', false);
             $('#btnC').prop('disabled', false);
+            $('#btnD').prop('disabled', false);
 
         }
 
@@ -176,9 +181,9 @@
             };
             var audio = new Audio();
             audio.src = "poko.mp3";
+            audio.play();
             var audio1 = new Audio();
             audio1.src = "pin.wav";
-            audio1.play();
 
 
         }
@@ -207,11 +212,17 @@
         function btnCClick(e) {
             alarm();
             active = false;
-            period = 60 * parseInt($("#minute").val()) + parseInt($("#second").val());
+            period = 60 * parseInt(3);
             $("#time").html("経過時間 : 0");
             $("#remain").html("残り時間 : " + period);
 
 
+        }
+
+        function btnDClick(e) {
+            active = false;
+            period = 60 * parseInt(2)
+            $("#remain").html("残り時間:" + period);
         }
 
 
@@ -250,8 +261,7 @@
     <button id="btnB">STOP</button>
     <button id="btnC">SET</button>
     <button id="btnD">3分</button>
-    <input type="number" id="minute" value=3>
-    <input type="number" id="second" value=0>
+
 </body>
 
 </html>
