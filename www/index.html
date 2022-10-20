@@ -172,12 +172,13 @@
             var img = new Image();
             img.src = "ksuisbg.gif";
             img.onload = function() {
-                ctx.drawImage(img, 0, 0, 300, 300);
+                ctx.drawImage(img, 0, 0, 500, 500);
             };
             var audio = new Audio();
             audio.src = "poko.mp3";
-            audio.play();
-
+            var audio1 = new Audio();
+            audio1.src = "pin.wav";
+            audio1.play();
 
 
         }
@@ -221,6 +222,10 @@
                 var rest = period - time;
                 $("#time").html("経過時間: " + time);
                 $("#remain").html("残り時間: " + rest);
+                if(rest <= 30 && rest >= 28){
+                    $("#time").html("残り30秒");
+                    audio1();
+                }
                 analog(rest);
                 if (rest <= 0) {
                     active += false;
@@ -234,16 +239,17 @@
 </head>
 
 <body>
-    <canvas id="mycanvas" width="350" height="300">Test</canvas>
+    <canvas id="mycanvas" width="370" height="300">Test</canvas>
 
     <div id="minuteStr">〇</div>
     <div id="secondStr">〇</div>
 
-    <div id="remain">Remaining time</div>
+    <div id="remain">残り時間:</div>
     <div id="time">Time</div>
     <button id="btnA">START</button>
     <button id="btnB">STOP</button>
     <button id="btnC">SET</button>
+    <button id="btnD">3分</button>
     <input type="number" id="minute" value=3>
     <input type="number" id="second" value=0>
 </body>
