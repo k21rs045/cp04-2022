@@ -38,14 +38,23 @@
 
             $('#btnC').click(function(e) {
                 btnCClick(e);
+                $("#btnC").prop("disabled",true);
+                $("#btnD").prop("disabled",false);
+                $("#btnE").prop("disabled",false);
             });
 
             $('#btnD').click(function(e) {
                 btnDClick(e);
+                $("#btnC").prop("disabled",false);
+                $("#btnD").prop("disabled",true);
+                $("#btnE").prop("disabled",false);
             });
 
             $('#btnE').click(function(e) {
                 btnEClick(e);
+                $("#btnC").prop("disabled",false);
+                $("#btnD").prop("disabled",false);
+                $("#btnE").prop("disabled",true);
             });
             init();
         });
@@ -101,10 +110,10 @@
         }
         // 時計 clock(時, 分, 秒, 残り時間が短い時に不要な針を隠す)
         function clock(hour, minute, second, hide) {
-            var canvas = $('#mycanvas')[0];
-            var ctx = canvas.getContext('2d');
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            //var canvas = $('#mycanvas')[0];
+            //var ctx = canvas.getContext('2d');
+            //ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            //ctx.fillRect(0, 0, canvas.width, canvas.height);
             var cx = canvas.width / 2;
             var cy = canvas.height / 2;
             var ds = second / 60;
@@ -186,12 +195,15 @@
             var audio = new Audio();
             audio.src = "poko.mp3";
             audio.play();
-            var audio1 = new Audio();
-            audio1.src = "pin.wav";
 
 
         }
 
+        function alarm1(){
+            var audio1 = new Audio();
+            audio1.src = "pin.wav";
+            audio1.play()
+        }
         // ButtonAがクリックされた時の処理
         function btnAClick(e) {
             active = true;
@@ -219,9 +231,6 @@
             period = 60 * parseInt(3);
             $("#time").html("経過時間 : 0");
             $("#remain").html("残り時間:" + period);
-            $("#btnC").css("background-color","gray");
-            $("#btnD").css("background-color","white");
-            $("#btnE").css("background-color","white");
 
         }
 
@@ -230,9 +239,7 @@
             active = false;
             period = 60 * parseInt(2);
             $("#remain").html("残り時間:" + period);
-            $("#btnC").css("background-color","white");
-            $("#btnD").css("background-color","gray");
-            $("#btnE").css("background-color","white");
+
         }
 
         function btnEClick(e) {
@@ -240,9 +247,7 @@
             active = false;
             period = 60 *parseInt(1);
             $("#remain").html("残り時間:" + period);
-                        $("#btnC").css("background-color","white");
-            $("#btnD").css("background-color","white");
-            $("#btnE").css("background-color","gray");
+
         }
 
 
@@ -255,12 +260,14 @@
                 $("#remain").html("残り時間: " + rest);
                 if(rest <= 30 && rest >= 28){
                     $("#time").html("残り30秒");
-                    audio1();
+                    if(rest == 30){
+                        alarm1();
+                    }
                 }
                 analog(rest);
                 if (rest <= 0) {
-                    active += false;
-                    alarm();
+                    active = false;
+                    alarm1();
                 }
             }
 
