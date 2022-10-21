@@ -205,6 +205,36 @@
             audio1.play()
         }
 
+        function alarm2() {
+            var canvas = $("#mycanvas")[0];
+            var ctx = canvas.getContext("2d");
+            var img1 = new Image();
+            img1.src = "matigai-2.jpg";
+            img1.onload = function() {
+                ctx.drawImage(img1, 0, 0, 375, 300);
+            };
+            var audio = new Audio();
+            audio.src = "poko.mp3";
+            audio.play();
+
+
+        }
+
+        function alarm3() {
+            var canvas = $("#mycanvas")[0];
+            var ctx = canvas.getContext("2d");
+            var img2 = new Image();
+            img2.src = "matigai-3.jpg";
+            img2.onload = function() {
+                ctx.drawImage(img2, 0, 0, 375, 300);
+            };
+            var audio = new Audio();
+            audio.src = "poko.mp3";
+            audio.play();
+
+
+        }
+
         // ButtonAがクリックされた時の処理
         function btnAClick(e) {
             active = true;
@@ -219,7 +249,6 @@
         // ButtonBがクリックされた時の処理
         function btnBClick(e) {
             active = false;
-            alarm();
             a = new Date() - startTime;
             $("#btnA").html("RESTART");
         }
@@ -235,14 +264,14 @@
         }
 
         function btnDClick(e) {
-            alarm();
+            alarm2();
             active = false;
             period = 60 * parseInt(2);
             $("#remain").html("残り時間:" + period);
         }
 
         function btnEClick(e) {
-            alarm();
+            alarm3();
             active = false;
             period = 60 * parseInt(1);
             $("#remain").html("残り時間:" + period);
